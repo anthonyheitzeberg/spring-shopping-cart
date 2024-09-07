@@ -1,4 +1,4 @@
-package com.dailycodework.dream_shops.model;
+package com.dailycodework.dreamshops.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,19 +6,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.sql.Blob;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Category {
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String filename;
+    private String filetype;
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    @Lob
+    private Blob image;
+    private String downloadUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 }
