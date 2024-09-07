@@ -8,4 +8,6 @@ public class Image {
     private String filetype;
     private Blob image;
     private String downloadUrl;
+
+    private Product product;
 }
